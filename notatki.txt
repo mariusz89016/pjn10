@@ -1,0 +1,37 @@
+związki zgody - np. rzeczownik + przymiotnik (jesli jest przydawka dla danego rzeczownika)
+związki zgody - w zdaniu (np. czarne krzesło)
+przymiotnik dopasowuje się do rzeczownika - odmiana, itd.
+
+związek zgody (kongruencja)
+* rzeczwonik + okreslajacy go przymiotnik
+* rzeczownik + imiesłów przymiotnikowy
+* rzeczownik + zaimek przymiotny
+* rzeczownik + liczebnik
+* podmiot + orzeczenie
+
+Związek rządu (czasownik 'widzieć' wymaga biernika) - rekcja
+* czasownik + dopełnienie
+* rzeczownik + rzeczownik
+* rzeczownik + wyrażenie przyimkowe
+
+Związek przynależności - występuje między czasownikiem a wyrazem odmiennym
+idę szybko, szli szybko, był wczoraj
+
+
+Zadanie:
+1. napisać program ustalający rekcję 5 wybranych przymików
+do - np. łączy sie z dopełniaczem i biernikiem, a pozostałe to śmieci
+mamy badać z korpusu - nie z wiki! xd
+
+synkretyzm przypadkow - kot - kota - trzeba zmyslnie zobaczyc ktore sie pokrywaja
+
+mozna potop, mozna pap
+
+KOLOKWIUM:
+matematyka - nie trzeba znać wzorów Markowa - trzeba znać sens!
+metryki - wszystkie!
+wzor Bayesa
+raczej nie bedzie pytan o definicje - trzeba znac sens (nie trzeba kuc regulek)
+o wszystkich algorytmach: po co, zalety, wady, jak to dziala
+LSA - dekompozycja macierzy
+SVD (nie bedziemy musieli tego zrobic na kartce)
