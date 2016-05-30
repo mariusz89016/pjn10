@@ -36,6 +36,7 @@ public class Note {
                 .map(str -> str.replace("?", ""))
                 .map(str -> str.replace("!", ""))
                 .map(str -> str.replace("-", ""))
+                .map(str -> str.replace("&", ""))
                 .map(str -> str.replace("\u0084", ""))
                 .map(str -> str.replace(".", ""))
                 .filter(word -> !word.equals(""))
