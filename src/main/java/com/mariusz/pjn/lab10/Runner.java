@@ -1,10 +1,7 @@
 package com.mariusz.pjn.lab10;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Runner {
@@ -81,9 +78,24 @@ public class Runner {
 //            }
 //            Map<Case, Double> histo = histogram.histo();
 //            List<Map.Entry<Case, Double>> lista = histo.entrySet().stream().sorted((a, b) -> b.getValue().compareTo(a.getValue())).collect(Collectors.toList());
+            long sum = przyimekToMap.get(s).values().stream().mapToLong(Long::longValue).sum();
+
 
             System.out.println(s);
-            System.out.println(przyimekToMap.get(s).entrySet().stream().sorted((a, b) -> b.getValue().compareTo(a.getValue())).collect(Collectors.toList()));
+            List<Map.Entry<Case, Double>> collect = przyimekToMap.get(s).entrySet().stream()
+                    .sorted((a, b) -> b.getValue().compareTo(a.getValue()))
+                    .map(e -> new AbstractMap.SimpleEntry<>(e.getKey(), e.getValue() / (double) sum))
+                    .collect(Collectors.toList());
+            double thereshold = 0d;
+            List<Map.Entry<Case, Double>> output = new LinkedList<>();
+
+            for (int i = 0; thereshold<0.6 && i<collect.size(); i++) {
+                Case key = collect.get(i).getKey();
+                double value = collect.get(i).getValue();
+                output.add(new AbstractMap.SimpleEntry<>(key, value));
+                thereshold+= value;
+            }
+            System.out.println(output);
             System.out.println("===============");
         }
 //        System.out.println(przyimekToMap);
