@@ -12,7 +12,7 @@ public class Runner {
 
     public static void main(String[] args) throws IOException {
         List<Note> notes = new NotesProvider("pap.txt").getNotes();
-        Map<String, Map<Case, Integer>> przyimekToMap = new HashMap<>();
+        Map<String, Map<Case, Long>> przyimekToMap = new HashMap<>();
 
         for (Note note : notes.subList(0, 5000)) {
             List<String> words = note.getWords();
@@ -42,16 +42,19 @@ public class Runner {
                                 if(wordType1== DictionaryCLP.WordType.RZECZOWNIK) {
                                     List<String> list = dictionaryCLP.clp_formv(integers1.get(0));
                                     List<Case> cases = new LinkedList<>();
+                                    int amount = 0;
                                     for (int k = 0; k < list.size(); k++) {
                                         if(list.get(k).equals(nextWord)) {
                                             cases.add(getCase(k));
+                                            amount++;
                                         }
                                     }
 
-                                    Map<Case, Integer> caseIntegerMap1 = przyimekToMap.get(word);
+                                    Map<Case, Long> caseIntegerMap1 = przyimekToMap.get(word);
                                     for (Case aCase : cases) {
-                                        int value = caseIntegerMap1.getOrDefault(aCase, 0);
-                                        caseIntegerMap1.put(aCase, value+1);
+                                        Long value = caseIntegerMap1.getOrDefault(aCase, 0L);
+                                        Double pow = Math.pow((7 - amount), 10);
+                                        caseIntegerMap1.put(aCase, value+1+pow.longValue());
                                     }
 //                                    System.out.println(cases);
 
@@ -69,17 +72,18 @@ public class Runner {
             }
         }
         for (String s : przyimekToMap.keySet()) {
-            Map<Case, Integer> caseDoubleMap = przyimekToMap.get(s);
-            Histogram<Case> histogram = new Histogram<>();
-            for (Map.Entry<Case, Integer> thing : caseDoubleMap.entrySet()) {
-                for (int i = 0; i < thing.getValue(); i++) {
-                    histogram.addDataPoint(thing.getKey());
-                }
-            }
-            Map<Case, Double> histo = histogram.histo();
-            List<Map.Entry<Case, Double>> lista = histo.entrySet().stream().sorted((a, b) -> b.getValue().compareTo(a.getValue())).collect(Collectors.toList());
+            Map<Case, Long> caseDoubleMap = przyimekToMap.get(s);
+//            Histogram<Case> histogram = new Histogram<>();
+//            for (Map.Entry<Case, Integer> thing : caseDoubleMap.entrySet()) {
+//                for (int i = 0; i < thing.getValue(); i++) {
+//                    histogram.addDataPoint(thing.getKey());
+//                }
+//            }
+//            Map<Case, Double> histo = histogram.histo();
+//            List<Map.Entry<Case, Double>> lista = histo.entrySet().stream().sorted((a, b) -> b.getValue().compareTo(a.getValue())).collect(Collectors.toList());
+
             System.out.println(s);
-            System.out.println(lista);
+            System.out.println(przyimekToMap.get(s).entrySet().stream().sorted((a, b) -> b.getValue().compareTo(a.getValue())).collect(Collectors.toList()));
             System.out.println("===============");
         }
 //        System.out.println(przyimekToMap);
